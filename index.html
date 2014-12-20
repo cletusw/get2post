@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <form method="POST" action="http://www.timtracks.com/tracks.php?cat=allTracks"></form>
+  <script>
+    var form = document.querySelector('form');
+    var query = location.search.substr(1);
+    query.split('&').forEach(function(part) {
+      var item = part.split('=');
+      addInput(form, item[0], decodeURIComponent(item[1]));
+    });
+    form.submit();
+
+    function addInput(form, name, value) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'hidden');
+      input.setAttribute('name', name);
+      input.setAttribute('value', value);
+      form.appendChild(input);
+    }
+  </script>
+</body>
+</html>
